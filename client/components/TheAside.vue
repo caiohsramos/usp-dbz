@@ -1,7 +1,8 @@
 <template>
   <aside class="aside">
     <h1>Barra lateral</h1>
-    <login/>
+	<!-- Mudar isso para um metodo -->
+    <login v-if="true == true"/>
   </aside>
 </template>
 
