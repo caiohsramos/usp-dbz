@@ -4,13 +4,18 @@
 
     <!-- Example of Vue using some data -->
     <ul v-for="disciplina of disciplinas" :key="disciplina.id_disciplina">
-      <li>{{ disciplina.codigo_disciplina }}</li>
+        <course :code="disciplina.codigo_disciplina" status="cursada"/>
+       <!-- <li>{{ disciplina.codigo_disciplina }}</li> -->
     </ul>
   </div>
 </template>
 
 <script>
+import Course from '@/components/Course.vue'; 
 export default {
+    components: {
+        Course
+    },
   data() {
     return {
       disciplinas: []
