@@ -1,7 +1,7 @@
 <template>
   <aside class="aside">
     <h1>Barra lateral</h1>
-    <!-- <login/> -->
+    <login/>
   </aside>
 </template>
 

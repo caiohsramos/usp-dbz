@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar">
-    <h1>Navbar</h1>
+	<h1>DBZ</h1>
   </nav>
 </template>
 
