@@ -1,7 +1,8 @@
-# MAC0350-PROJECT
-
-Template for the project developed during the course MAC0350
-(Introduction to Systems Development) at IME-USP.
+# projeto-mac0350
+## Integrantes do grupo
+* Caio Henrique Silva Ramos - NUSP 9292991
+* Igor Fratel Santana - NUSP
+* Guilherme Feulo do Espirito Santo - NUSP 6431749
 
 This repository is a monorepo and requires [docker][1] and
 [docker-compose][2] to run the services.
