@@ -1,7 +1,7 @@
 # projeto-mac0350
 ## Integrantes do grupo
 * Caio Henrique Silva Ramos - NUSP 9292991
-* Igor Fratel Santana - NUSP
+* Igor Fratel Santana - NUSP 9793565
 * Guilherme Feulo do Espirito Santo - NUSP 6431749
 
 This repository is a monorepo and requires [docker][1] and
@@ -20,4 +20,4 @@ docker-compose up
 ```
 
 [1]: https://store.docker.com/search?type=edition&offering=community
-[2]: https://docs.docker.com/compose/install/ 
+[2]: https://docs.docker.com/compose/install/
