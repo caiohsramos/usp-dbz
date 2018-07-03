@@ -1,0 +1,67 @@
+<template>
+    <div id="app">
+        <ul v-for="disciplina of disciplinas" :key="disciplina.id_disciplina">
+            <course :code="disciplina.codigo_disciplina" status="cursada"/>
+        </ul>
+    </div>
+</template>
+
+
+<script>
+import Course from '@/components/Course.vue';
+export default {
+  components: {
+    Course
+  },
+
+  data() {
+    return {
+      disciplinas: [],
+    };
+  },
+
+
+  // Initialize elements in 'data' before rendering page.
+  // More info at: https://nuxtjs.org/api/
+  async asyncData({ app }) {
+    return {
+      disciplinas: await app.$axios.$get("/disciplinas")
+    }
+  }
+}
+</script>
+
+<style lang="scss">
+
+#app{
+    width:100%;
+    justify-content: right;
+}
+.flex-container {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  width: 100%;
+  /*border: 1px solid silver;*/
+  -ms-box-orient: horizontal;
+}
+
+.flex-item {
+  background: tomato;
+  padding: 5px;
+  width: 200px;
+  height: 100px;
+  margin: 10px;
+
+  line-height: 100px;
+  color: white;
+  font-weight: bold;
+  font-size: 2em;
+  text-align: center;
+}
+
+
+
+
+</style>
