@@ -33,6 +33,7 @@ export default {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    margin: 10px;
 }
 
 .course_status {
