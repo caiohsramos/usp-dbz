@@ -1,16 +1,13 @@
 <template>
   <div class=".cruds__index">
 	  <h1> Disciplinas </h1>
-
-		  <table>
+		  <table v-if="disciplinas.length != 0">
 			  <tr>
-				  <th> Nome </th>
-				  <th> Código </th>
+				  <th v-for="k of Object.keys(disciplinas[0])" :key="k"> {{k}} </th>
 				  <th>  </th>
 			  </tr>
 			  <tr v-for="disciplina of disciplinas" :key="disciplina.id_disciplina">
-			 	 <td> {{ disciplina.nome }} </td>
-			 	 <td> {{ disciplina.codigo_disciplina }} </td>
+			 	 <td v-for="v of Object.values(disciplina)" :key="v"> {{ v }} </td>
 				 <button class="button blue"> Editar </button>
 				 <button class="button red"> Deletar </button>
 			  </tr>
@@ -80,6 +77,7 @@ th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
+	background-color: #f5f5f5;
 }
 
 </style>
