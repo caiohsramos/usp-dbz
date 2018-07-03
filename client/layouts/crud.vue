@@ -30,10 +30,6 @@ html {
   grid-template-rows: 1fr 10fr 1fr;
   grid-template-columns: 3fr 9fr;
 
-  grid-template-areas:
-    "aside navbar"
-    "aside main  "
-    "aside footer";
 }
 
 .main {
@@ -47,7 +43,5 @@ html {
   justify-content: start;
   align-items: center;
 
-  /* FIXME: Border to highlight */
-  border: 8px solid red;
 }
 </style>
