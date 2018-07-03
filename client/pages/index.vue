@@ -16,6 +16,14 @@
             </ul>
         </div>
     </div>
+    <div>
+        <p>Obrigatórias</p>
+        <progress-bar :stepsDone="92" :stepsDoing="4" :totalSteps="115"/><br>
+        <p>Eletivas</p>
+        <progress-bar :stepsDone="22" :stepsDoing="16" :totalSteps="56"/><br>
+        <p>Livres</p>
+        <progress-bar :stepsDone="4" :stepsDoing="0" :totalSteps="24"/>
+    </div>
     </article>
     </div>
 </template>
@@ -23,10 +31,12 @@
 
 <script>
 import Course from '@/components/Course.vue';
+import ProgressBar from '@/components/ProgressBar.vue';
 
 export default {
   components: {
-    Course
+    Course,
+    ProgressBar
   },
 
   data() {
