@@ -12,7 +12,7 @@
 				 <button class="button red"> Deletar </button>
 			  </tr>
 		  </table>
-	  <button class="button green"> Adicionar </button>
+	  <button class="button green" @click="onAdicionar"> Adicionar </button>
   </div>
 </template>
 
@@ -24,7 +24,14 @@ export default {
       prereq: [],
     };
   },
-
+  methods: {
+	  onAdicionar: function() {
+			this.$router.push({path: "/prerequisitos/new/"})
+		},
+	  onEditar: function() {
+			this.$router.push({path: "/prerequisitos/edit/"})
+		},
+	},
   async asyncData({ app }) {
     return {
       prereq: await app.$axios.$get("/prerequisitos")
