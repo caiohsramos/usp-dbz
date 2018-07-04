@@ -1,5 +1,6 @@
 <template>
   <div class=".cruds__new">
+	  <h1> Adicionar disciplina </h1>
 	  <div class="div-form">
 	  <form action="/disciplinas/new" method="post">
 		  <label> Código: </label>

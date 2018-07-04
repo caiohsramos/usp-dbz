@@ -1,6 +1,5 @@
 <template>
   <div class="page">
-	  <h1> Crud </h1>
     <main class="main">
       <nuxt/>
     </main>
