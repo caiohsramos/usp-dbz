@@ -2,16 +2,18 @@
   <aside class="aside">
     <h1>Barra lateral</h1>
 	<!-- Mudar isso para um metodo -->
-    <login v-if="true == true"/>
+    <login v-if="!this.$store.getters.isAuthenticated"/>
+    <logout v-else />
   </aside>
 </template>
 
 <script>
 import Login from '@/components/Login.vue';
-
+import Logout from '@/components/Logout.vue'
 export default {
   components: {
-    Login
+    Login,
+    Logout,
   }
 }
 </script>
