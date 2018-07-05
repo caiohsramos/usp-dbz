@@ -1,11 +1,11 @@
 <template>
     <div class="module" >
-        <h3>cod_trilha</h3>
+        <h3>{{name}}</h3> 
         <div class="inside_module">
-        <div v-for="disciplina of disciplinas" :key="disciplina.id_disciplina">
-        <Course name="disciplina.codigo_disciplina" status="cursada"/> 
-        </div> 
-        </div>
+            <div v-for="disciplina of disciplinas" :key="disciplina.id_disciplina">
+                <Course :code="disciplina.codigo_disciplina" :name="disciplina.nome" status="cursada"/> 
+            </div>
+       </div>
     </div>
 </template>
 
@@ -14,18 +14,23 @@
 import Course from '@/components/Course'
 export default {
     
-    props: ["name", "courses"],
+    props: ["name"],
     //bloqueadas cursadas e planejada
     components:{
-        Course
+        Course,
     },
 
     data(){
         return{
-            nome: "name",
-            disciplinas: "courses",
+            disciplinas: [],
         };
     },
+    created(){
+        this.$axios.$get("/disciplinas")   
+        .then(value => {
+                this.disciplinas=value;
+            })
+    }
 }
 
 </script>

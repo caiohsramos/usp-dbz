@@ -1,35 +1,33 @@
 <template>
     <div id="app">
-        
-        <div><Track name="Obrigatorias" :disc="disciplinas"/></div>
+        <!--<div><Track name="Obrigatorias" :disc="disciplinas"/></div> -->
         <div v-for="trilha of trilhas" :key="trilha.id_trilha">
-            <Track :name="trilha.nome" :descr="trilha.descricao" :modules="modulos" :disc="disciplinas"/>
-        </div>
-        <div>
+            <Track :name="trilha.nome" :descr="trilha.descricao"/>
+       </div> 
+        <!--<div>
             <p>Obrigatórias</p>
             <progress-bar :stepsDone="92" :stepsDoing="4" :totalSteps="115"/><br>
             <p>Eletivas</p>
             <progress-bar :stepsDone="22" :stepsDoing="16" :totalSteps="56"/><br>
             <p>Livres</p>
             <progress-bar :stepsDone="4" :stepsDoing="0" :totalSteps="24"/>
-        </div>
+        </div> -->
     </div>
 </template>
 
 
 <script>
 import Track from '@/components/Track';
-import ProgressBar from '@/components/ProgressBar';
+//import ProgressBar from '@/components/ProgressBar';
 export default {
   components: {
     Track,
-    ProgressBar,
+   // ProgressBar,
   },
 
   data() {
     return {
-      disciplinas: [],
-      isOpen: true
+      trilhas: [],
     };
   },
 
@@ -38,9 +36,7 @@ export default {
   // More info at: https://nuxtjs.org/api/
   async asyncData({ app }) {
     return {
-      disciplinas: await app.$axios.$get("/disciplinas"),
-      trilhas: await app.$axios.$get("/trilhas"),
-      modulos: await app.$axios.$get("/modulos")
+        trilhas: await app.$axios.$get("/trilhas"),
     }
   }
 }

@@ -2,7 +2,7 @@
     <div class="course">
         <div class="course_status" @click="increment()">{{status}}</div>
         <div class="course_counter">{{counter}}</div>
-        <div> {{code}}  </div>
+        <div><h5> {{code}}</h5></div>
     </div>
 
 </template>
@@ -10,7 +10,7 @@
 
 <script>
 export default {
-    props: ["code", "status"],
+    props: ["code","name", "status"],
     //bloqueadas cursadas e planejada
 
     data(){

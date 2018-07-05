@@ -1,64 +1,58 @@
 <template>
     <div class="track" >
-    <article class="message" :class=" accordionClasses"> 
+      <article class="message" :class=" accordionClasses"> 
         <div class="message-header" @click="toogleAccordion()">
             <p>{{name}}</p>
         </div>
         <div class="message-body">
             <p>{{descr}}</p> 
             <div class="inside_track" >
-                <div v-for="modulo of modulos" :key="modulo.id_modulo">
-                    <!-- <Course :code="disciplina.id_disciplina" status="cursada"/> -->
-                    
-                    <Module :name="modulo.codigo_modulo" :courses="disciplinas"/>
+                <div v-for="modulo of modulos" :key="modulo.id_modulo"> 
+                    <module :name="modulo.codigo_modulo"/> 
                 </div>
             </div>
         </div>
-    </article>
+    </article> 
     </div>
 </template>
 
 
 <script>
-import Course from '@/components/Course'
-import Module from '@/components/Module'
+import Module from '@/components/Module.vue'
 export default {
     
-    props: ["name", "descr","modules","disc"],
-    //bloqueadas cursadas e planejada
+    props: ["name", "descr"],
     components:{
         Module,
-        Course
     },
 
     data(){
         return{
-            modulos: "modules",
-            disciplinas: "disc",
-            isOpen: true
+            isOpen: true,
+            modulos:[] ,
         };
     },
     methods: {
         toogleAccordion: function(){
             this.isOpen= !this.isOpen;
-        }
+        },
     },
-
+    
+    created(){
+        this.$axios.$get("/modulos")   
+        .then(value => {
+                this.modulos=value;
+            })
+    },
     computed:{
-        accordionClasses: function() {
-            return {
-                'is-closed': !this.isOpen,
-                'is-Primary': this.isOpen,
+       accordionClasses: function() {
+           return {
+               'is-closed': !this.isOpen,
+               'is-Primary': this.isOpen,
                 'is-dark': !this.isOpen
             };
         }
     },
-
-    async asyncData({Track}){
-        return{
-            disciplinas: await app.$axios.$get("/disciplinas")
-        }
-    }
 }
 
 </script>
