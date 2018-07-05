@@ -1,8 +1,8 @@
 <template>
     <div class="progressbar">
-        <div class="bar" v-bind:style="{background: 'lightgrey', width: 200 + 'px'}">
-            <div class="bar" v-bind:style="{background: 'orange', width:doneProgress + doingProgress + '%'}"/>
-            <div class="bar" v-bind:style="{background: 'blue', width:doneProgress + '%'}"/>
+        <div class="bar" id="bg" v-bind:style="{background: 'lightgrey', width: 200 + 'px'}">
+            <div class="bar" id="laranja" v-bind:style="{background: 'orange', width:doneProgress + doingProgress + '%'}"/>
+            <div class="bar" id="azul" v-bind:style="{background: 'blue', width:doneProgress + '%'}"/>
         </div>
     </div>
 </template>
@@ -31,8 +31,21 @@ export default {
 </script>
 
 <style lang="scss">
+.progressbar{
+}
 .bar{
-     position: absolute;
      height: 20px;
+}
+#bg{
+    position: absolute;
+    z-index: -10;
+}
+#laranja{
+    position: absolute;
+    z-index: 0;
+}
+#azul{
+    position: absolute;
+    z-index: 10;
 }
 </style>

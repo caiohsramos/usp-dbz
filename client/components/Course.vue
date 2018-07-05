@@ -2,7 +2,8 @@
     <div class="course">
         <div class="course_status" @click="increment()">{{status}}</div>
         <div class="course_counter">{{counter}}</div>
-        <div><h5> {{code}}</h5></div>
+        <div>{{code}}</div>
+        <div>{{name}}</div>
     </div>
 
 </template>
@@ -34,6 +35,8 @@ export default {
     justify-content: flex-start;
     align-items: center;
     margin: 10px;
+    max-width: 100px;
+    text-align: center;
 }
 
 .course_status {
