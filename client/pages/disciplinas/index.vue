@@ -8,7 +8,7 @@
 			  </tr>
 			  <tr v-for="disciplina of disciplinas" :key="disciplina.id_disciplina">
 			 	 <td v-for="v of Object.values(disciplina)" :key="v"> {{ v }} </td>
-				 <button class="button blue" @click="onEditar"> Editar </button>
+				 <button class="button blue" @click="onEditar(disciplina.id_disciplina)"> Editar </button>
 				 <button class="button red" @click="onDeletar(disciplina.id_disciplina)"> Deletar </button>
 			  </tr>
 		  </table>
@@ -28,8 +28,8 @@ export default {
 	  onAdicionar: function() {
 			this.$router.push({path: "/disciplinas/new"})
 		},
-	  onEditar: function() {
-			this.$router.push({path: "/disciplinas/edit/"})
+	  onEditar: function(id) {
+		  this.$router.push({path: "/disciplinas/edit/", query: {id: id}})
 		},
 	  async onDeletar(id) {
 		  let result = await this.$axios.$delete("/disciplinas?id_disciplina=eq."+id, 
