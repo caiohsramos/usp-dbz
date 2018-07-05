@@ -23,8 +23,40 @@ public.modulos(
     minimo_disciplinas,
     id_trilha)
 VALUES
-(0,'DESSOFT',4,1),
+(0,'Des. Soft.',4,1),
 (1,'BD',2,1),
-(2,'PARDIS',3,1),
-(3,'INTRO',2,0);
+(2,'Par e Dis',3,1),
+(3,'Intro IA',2,0),
+(4,'Sistemas',2,0),
+(5,'Teoria IA',1,0),
+(6,'Obrig.',1,0),
+(7,'Algoritmos',2,2),
+(8,'Alg. 2',0,2),
+(9,'Otimizacao',2,2),
+(10,'Otim. 2',0,2),
+(11,'Mat discr',3,2),
+(12,'Mat discr2',0,2),
+(13,'Nucleo 1',5,3),
+(14,'Nucleo 2',1,3),
+(15,'Nucleo 3',1,3);
 
+DELETE FROM public.disciplinas;
+
+INSERT INTO
+
+public.disciplinas(
+    codigo_disciplina,
+    creditos_aula,
+    creditos_trabalho,
+    carga_horaria,
+    ativacao,
+    nome)
+
+VALUES
+('MAC0101',2,0,30,'1999-01-01','Integracao na Universidade e na profissao'),
+('MAC0105',4,0,60,'1999-01-01','Fundamentos da Matemática para a Computação'),
+('MAC0110',4,0,60,'1999-01-01','Introducao a Computacao'),
+('MAC0329',4,0,60,'1999-01-01','Algebra Booleana e Aplicações'),
+('MAT2453',4,0,60,'1999-01-01','Calculo Diferencia e Integral I'),
+('MAT0112',4,0,60,'1999-01-01','Vetores e Geometria'),
+('MAC0239',4,0,60,'1999-01-01','Introducao a Logica e verificacao de programas');

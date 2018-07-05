@@ -7,8 +7,13 @@
         <div class="message-body">
             <p>{{descr}}</p> 
             <div class="inside_track" >
-                <div v-for="modulo of modulos" :key="modulo.id_modulo"> 
-                    <module :name="modulo.codigo_modulo"/> 
+                <div v-if="name=='Obrigatorias'">
+                        <module name="" id=""/>
+                </div>
+                <div v-else>
+                    <div v-for="modulo of modulos" :key="modulo.id_modulo"> 
+                        <module :name="modulo.codigo_modulo" :id="modulo.id_modulo" /> 
+                    </div>
                 </div>
             </div>
         </div>
@@ -21,7 +26,7 @@
 import Module from '@/components/Module.vue'
 export default {
     
-    props: ["name", "descr"],
+    props: ["name", "descr","id"],
     components:{
         Module,
     },
@@ -30,6 +35,7 @@ export default {
         return{
             isOpen: true,
             modulos:[] ,
+            disciplinas: [],
         };
     },
     methods: {
@@ -39,9 +45,9 @@ export default {
     },
     
     created(){
-        this.$axios.$get("/modulos")   
-        .then(value => {
-                this.modulos=value;
+            this.$axios.$get('/modulos?id_trilha=eq.'+this.id)   
+                .then(value => {
+            this.modulos=value;
             })
     },
     computed:{

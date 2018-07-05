@@ -26,6 +26,13 @@ export default {
         };
     },
     created(){
+        //if(this.name =="Obrigatorias"){
+        //    this.$axios.$get('/disciplinas')   
+        //        .then(value => {
+        //    this.disciplinas=value;
+        //    })
+        //}
+        //else{
         this.$axios.$get("/disciplinas")   
         .then(value => {
                 this.disciplinas=value;
