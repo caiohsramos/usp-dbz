@@ -47,7 +47,8 @@ export default {
 			this.$router.push({path: "/disciplinas"})
 		},
 	  async salvar() {
-		  let result = await this.$axios.$post("/disciplinas", {
+		  let result = await this.$axios.$post("/disciplinas",  
+			{
 			  codigo_disciplina:this.cod_dis,
 			  creditos_aula: this.cred_aula,
 			  creditos_trabalho: this.cred_trab,
@@ -56,7 +57,7 @@ export default {
 			  desativacao: this.desativa,
 			  nome: this.nome,
 			  ementa: this.ementa,
-		  })
+		  }, {headers: { Authorization: 'Bearer ' + this.$store.state.token}},)
 		  console.log(result)
 		  this.$router.push({path: "/disciplinas"})
 		},
