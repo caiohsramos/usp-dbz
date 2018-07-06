@@ -2,12 +2,12 @@
   <footer class="footer">
     <div id="main-div">
         <div id="title-div">
-        <p id="title">Contagem de créditos(Total: w/W)</p>
+            <p id="title">Contagem de créditos(Total: w/{{total_obrigatorias}})</p>
         </div>
         <div id="row1">
             <div id="column1">
                 <p>Obrigatórias</p>
-                <progress-bar :stepsDone="92" :stepsDoing="4" :totalSteps="115"/>
+                <progress-bar :stepsDone="8" :stepsDoing="4" :totalSteps="total_obrigatorias"/>
             </div>
             <div id="column2">
                 <p>Eletivas</p>
@@ -27,6 +27,17 @@ export default{
 components: {
     ProgressBar,
   },
+    data(){
+        return{
+            total_obrigatorias: 0,
+        }
+    },
+    created(){
+        this.$axios.$post("/rpc/creditos_obrigatorios_total",{"ano": '2017-01-01'})  
+        .then(value => {
+            this.total_obrigatorias=value;
+        })
+    },
 }
 </script>
 <style>
