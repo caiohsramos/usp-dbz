@@ -29,7 +29,6 @@
 
 <script>
 export default {
-	layout: 'crud',
 	data() {
 		return {
 			disciplinas: [],

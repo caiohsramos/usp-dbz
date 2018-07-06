@@ -18,7 +18,6 @@
 
 <script>
 export default {
-	layout: 'crud',
   data() {
     return {
       grad_opt: [],

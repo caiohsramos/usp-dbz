@@ -9,7 +9,7 @@
 			  <tr v-for="g of grad_obr" :key="g.id_disciplina">
 			 	 <td v-for="v of Object.values(g)" :key="v"> {{ v }} </td>
 				 <button class="button blue"> Editar </button>
-				 <button class="button red"> Deletar </button>
+				 <button class="button red" @click="onDeletar(g.id_disciplina)"> Deletar </button>
 			  </tr>
 		  </table>
 	  <button class="button green" @click="onAdicionar"> Adicionar </button>
@@ -18,7 +18,6 @@
 
 <script>
 export default {
-	layout: 'crud',
   data() {
     return {
       grad_obr: [],
@@ -31,6 +30,12 @@ export default {
 	  onEditar: function() {
 			this.$router.push({path: "/grade_obrigatoria/edit/"})
 		},
+	  async onDeletar(id) {
+		  let result = await this.$axios.$delete("/grade_obrigatoria?id_disciplina=eq."+id, 
+			  {headers: { Authorization: 'Bearer ' + this.$store.state.token}},)
+		  console.log(result)
+		  this.$router.go({path: "/grade_obrigatoria"})
+	  }
 	},
   async asyncData({ app }) {
     return {
