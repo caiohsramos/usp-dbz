@@ -29,6 +29,7 @@
 
 <script>
 export default {
+	layout: 'crud',
 	data() {
 		return {
 			cod_dis: '',

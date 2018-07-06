@@ -5,20 +5,17 @@
     <main class="main">
       <nuxt/>
     </main>
-    <the-footer/> 
   </div>
 </template>
 
 <script>
 import TheNavbar from "~/components/TheNavbar.vue";
 import TheAside from "~/components/TheAside.vue";
-import TheFooter from "~/components/TheFooter.vue";
 
 export default {
   components: {
     TheNavbar,
     TheAside,
-    TheFooter,
   }
 };
 </script>
