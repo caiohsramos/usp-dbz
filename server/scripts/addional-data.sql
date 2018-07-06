@@ -60,3 +60,15 @@ VALUES
 ('MAT2453',4,0,60,'1999-01-01','Calculo Diferencia e Integral I'),
 ('MAT0112',4,0,60,'1999-01-01','Vetores e Geometria'),
 ('MAC0239',4,0,60,'1999-01-01','Introducao a Logica e verificacao de programas');
+
+CREATE VIEW obrigatorias AS
+SELECT * FROM disciplinas
+NATURAL JOIN grade_obrigatoria;
+
+INSERT INTO
+grade_obrigatoria(
+    id_disciplina,
+    ano_grade_obrigatoria)
+VALUES
+(10,'2017-01-01'),
+(9,'2017-01-01');

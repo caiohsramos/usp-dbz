@@ -14,7 +14,7 @@
 import Course from '@/components/Course'
 export default {
     
-    props: ["name"],
+    props: ["name","id"],
     //bloqueadas cursadas e planejada
     components:{
         Course,
@@ -26,17 +26,18 @@ export default {
         };
     },
     created(){
-        //if(this.name =="Obrigatorias"){
-        //    this.$axios.$get('/disciplinas')   
-        //        .then(value => {
-        //    this.disciplinas=value;
-        //    })
-        //}
-        //else{
-        this.$axios.$get("/disciplinas")   
+        if(this.name ==""){
+            this.$axios.$post('/rpc/list_obrigatorias',{})   
+                .then(value => {
+            this.disciplinas=value;
+            })
+        }
+        else{
+            this.$axios.$post("/rpc/list_disciplinas_modulos",{"id": this.id})   
         .then(value => {
                 this.disciplinas=value;
             })
+        }
     }
 }
 

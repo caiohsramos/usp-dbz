@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <div><Track name="Obrigatorias" :disc="disciplinas"/></div> 
+        <div><Track name="Obrigatorias" /></div> 
         <div v-for="trilha of trilhas" :key="trilha.id_trilha">
             <Track :name="trilha.nome" :descr="trilha.descricao" :id="trilha.id_trilha"/>
        </div> 
