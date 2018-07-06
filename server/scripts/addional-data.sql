@@ -72,3 +72,17 @@ grade_obrigatoria(
 VALUES
 (10,'2017-01-01'),
 (9,'2017-01-01');
+
+
+CREATE FUNCTION list_obrigatorias() RETURNS SETOF disciplinas AS $$
+SELECT disciplinas.* FROM disciplinas
+NATURAL JOIN grade_obrigatoria ;
+$$ LANGUAGE SQL;
+
+
+CREATE FUNCTION list_disciplinas_modulos(id integer) RETURNS SETOF disciplinas AS $$
+SELECT disciplinas.*  FROM
+disciplinas NATURAL JOIN optativas_compoem_modulos
+WHERE
+id_modulo = id
+$$ LANGUAGE SQL;
