@@ -1,23 +1,25 @@
 <template>
     <div class="track" >
-      <article class="message" :class=" accordionClasses"> 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+      <article class="message" :class=" accordionClasses">
         <div class="message-header" @click="toogleAccordion()">
-            <p>{{name}}</p>
+            <i id= "column1" :class=" accordionArrow"></i>
+            <p id= "column2">{{name}}</p>
         </div>
         <div class="message-body">
-            <p>{{descr}}</p> 
+            <p>{{descr}}</p>
             <div class="inside_track" >
                 <div v-if="name=='Obrigatorias'">
                         <module name="" id=""/>
                 </div>
                 <div v-else>
-                    <div v-for="modulo of modulos" :key="modulo.id_modulo"> 
-                        <module :name="modulo.codigo_modulo" :id="modulo.id_modulo" /> 
+                    <div v-for="modulo of modulos" :key="modulo.id_modulo">
+                        <module :name="modulo.codigo_modulo" :id="modulo.id_modulo" />
                     </div>
                 </div>
             </div>
         </div>
-    </article> 
+    </article>
     </div>
 </template>
 
@@ -25,7 +27,7 @@
 <script>
 import Module from '@/components/Module.vue'
 export default {
-    
+
     props: ["name", "descr","id"],
     components:{
         Module,
@@ -43,9 +45,9 @@ export default {
             this.isOpen= !this.isOpen;
         },
     },
-    
+
     created(){
-            this.$axios.$get('/modulos?id_trilha=eq.'+this.id)   
+            this.$axios.$get('/modulos?id_trilha=eq.'+this.id)
                 .then(value => {
             this.modulos=value;
             })
@@ -57,7 +59,13 @@ export default {
                'is-Primary': this.isOpen,
                 'is-dark': !this.isOpen
             };
-        }
+        },
+        accordionArrow: function() {
+            return {
+                'fas fa-caret-right': !this.isOpen,
+                'fas fa-caret-down': this.isOpen
+            };
+        },
     },
 }
 
@@ -77,71 +85,50 @@ export default {
     justify-content: flex-start;*/
 }
 
-/*
-
-.flex-container {
-    display: flex;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    width: 100%;
-    border: 1px solid silver;
-    -ms-box-orient: horizontal;
-}
-
-.nowrap  {
-    -webkit-flex-wrap: nowrap;
-    flex-wrap: nowrap;
-}
- 
-.wrap    {
-    -webkit-flex-wrap: wrap;
-    flex-wrap: wrap;
-}
-.wrap li {
-    background: gold;
-}
-
-.wrap-reverse {
-    -webkit-flex-wrap: wrap-reverse;
-    flex-wrap: wrap-reverse;
-}
-.wrap-reverse li {
-    background: deepskyblue;
-}
-.flex-item {
-    background: tomato;
-    padding: 5px;
-    width: 200px;
-    height: 100px;
-    margin: 10px;
-    line-height: 100px;
-    color: white;
-    font-weight: bold;
-    font-size: 2em;
-    text-align: center;
-}
-*/
 .message {
     /*max-width: 500px;*/
     margin-left: auto;
     margin-right: auto;
 }
- 
+
 .message-header {
+    display:flex;
+    flex-direction:row;
+    justify-content: left;
+    margin-bottom: 40px;
+    width: 100%;
     cursor: pointer;
     color: blue;
 }
- 
+
 .message-body   {
     padding: 0;
     /*max-height: 10em;*/
     overflow: hidden;
     transition: 0.3s ease all;
 }
- 
+
 .is-closed .message-body {
     max-height: 0;
+ }
+
+ #row1{
+     display:flex;
+     flex-direction:row;
+     justify-content: space-around;
+     margin-bottom: 40px;
+     width: 100%;
+ }
+
+ #column1{
+     display:flex;
+     flex-direction:column;
+
+ }
+
+ #column2{
+     display:flex;
+     flex-direction:column;
  }
 
 </style>
