@@ -1,7 +1,5 @@
 <template>
   <aside class="aside">
-    <h1>Barra lateral</h1>
-	<!-- Mudar isso para um metodo -->
     <login v-if="!this.$store.getters.isAuthenticated"/>
     <logout v-else />
   </aside>
@@ -31,6 +29,5 @@ export default {
   align-items: center;
 
   /* FIXME: Border to highlight */
-  border: 8px solid green;
 }
 </style>

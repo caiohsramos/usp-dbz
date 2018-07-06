@@ -40,6 +40,9 @@ export default {
 			this.$router.push({path: "/disciplinas"})
 		},
 	  async salvar(id) {
+		  if (this.disciplinas[0].desativacao == '') {
+			  this.disciplinas[0].desativacao = null
+		  }
 		  let result = await this.$axios.$patch("/disciplinas?id_disciplina=eq."+id,  
 			this.disciplinas[0], {headers: { Authorization: 'Bearer ' + this.$store.state.token}},)
 		  console.log(result)

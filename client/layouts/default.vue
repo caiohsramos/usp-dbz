@@ -57,6 +57,5 @@ html {
   align-items: center;
 
   /* FIXME: Border to highlight */
-  border: 8px solid red;
 }
 </style>

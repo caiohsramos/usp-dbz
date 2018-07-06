@@ -16,7 +16,5 @@
   justify-content: center;
   align-items: center;
 
-  /* FIXME: Border to highlight */
-  border: 8px solid blue;
 }
 </style>

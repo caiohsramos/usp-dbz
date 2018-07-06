@@ -13,6 +13,7 @@ export default {
   methods: {
     async logout() {
       this.$store.commit("setToken", { token: ""});
+		this.$router.go({path: "/"})
     }
   }
 }

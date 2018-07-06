@@ -37,7 +37,7 @@ export default {
 			cred_trab: '',
 			carga: '',
 			ativa: '',
-			desativa: '',
+			desativa: null,
 			nome: '',
 			ementa: '',
 		}
