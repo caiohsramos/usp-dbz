@@ -29,6 +29,7 @@ export default {
 
       // Save token at global vuex store to be used by auth middleware
       this.$store.commit("setToken", { token: t});
+		this.$router.go({path: "/disciplinas"})
     }
   }
 }
