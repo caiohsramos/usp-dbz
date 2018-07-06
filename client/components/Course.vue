@@ -1,7 +1,9 @@
 <template>
     <div class="course">
-        <div class="course_status" @click="increment()">{{status}}</div>
-        <div class="course_counter">{{counter}}</div>
+        <div id="row1">
+            <div class="course_status" @click="increment()">{{status}}</div>
+            <div class="course_counter">{{counter}}</div>
+        </div>
         <div>{{code}}</div>
         <div>{{name}}</div>
     </div>
@@ -50,6 +52,7 @@ export default {
     width: 5rem;
     height: 5rem;
     border-radius: 100%;
+    margin-bottom: -30px;
 }
 
 .course_counter {
@@ -64,9 +67,35 @@ export default {
 
     border-width: 0.2rem;
     border-color: black;
-    border-radius: 100%; 
+    border-radius: 100%;
 
     width: 1.5rem;
     height: 1.5rem;
+    position: absolute;
+    top: 50px;
+    left: 75px;
+}
+
+#row1{
+    display:flex;
+    flex-direction:row;
+    justify-content: space-around;
+    margin-bottom: 40px;
+    width: 100%;
+    position: relative;
+}
+
+#column1{
+    display:flex;
+    flex-direction:column;
+    margin-right: 40px;
+
+}
+
+#column2{
+    display:flex;
+    flex-direction:column;
+    margin-left: 40px;
+    margin-right: 40px;
 }
 </style>
