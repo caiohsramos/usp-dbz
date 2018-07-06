@@ -1,18 +1,23 @@
 <template>
   <footer class="footer">
-    <div>
-        <div class="bar">
-            <p>Obrigatórias</p>
-            <progress-bar :stepsDone="92" :stepsDoing="4" :totalSteps="115"/>
+    <div id="main-div">
+        <div id="title-div">
+        <p id="title">Contagem de créditos(Total: w/W)</p>
         </div>
-        <div class="bar">
-            <p>Eletivas</p>
-            <progress-bar :stepsDone="22" :stepsDoing="16" :totalSteps="56"/>
+        <div id="row1">
+            <div id="column1">
+                <p>Obrigatórias</p>
+                <progress-bar :stepsDone="92" :stepsDoing="4" :totalSteps="115"/>
+            </div>
+            <div id="column2">
+                <p>Eletivas</p>
+                <progress-bar :stepsDone="22" :stepsDoing="16" :totalSteps="56"/>
+            </div>
+            <div id="column3">
+                <p>Livres</p>
+                <progress-bar :stepsDone="0" :stepsDoing="0" :totalSteps="24"/>
+            </div>
         </div>
-       <!-- <div class="bar">
-            <p>Livres</p>
-            <progress-bar :stepsDone="4" :stepsDoing="0" :totalSteps="24"/>
-        </div> -->
     </div>
   </footer>
 </template>
@@ -38,5 +43,48 @@ components: {
 
   /* FIXME: Border to highlight */
  /* border: 8px solid orange;*/
+}
+
+#main-div {
+    width: 100%;
+}
+
+#title-div {
+    background: blue;
+    height: 100%;
+}
+
+#title {
+    color: white;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+#row1{
+    display:flex;
+    flex-direction:row;
+    justify-content: space-around;
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+#column1{
+    display:flex;
+    flex-direction:column;
+    margin-right: 40px;
+
+}
+
+#column2{
+    display:flex;
+    flex-direction:column;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+#column3{
+    display:flex;
+    flex-direction:column;
+    margin-left: 40px;
 }
 </style>

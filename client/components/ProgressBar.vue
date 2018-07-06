@@ -37,8 +37,8 @@ export default {
      height: 20px;
 }
 #bg{
-    position: absolute;
     z-index: -10;
+    position: relative;
 }
 #laranja{
     position: absolute;
