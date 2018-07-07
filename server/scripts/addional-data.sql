@@ -189,4 +189,47 @@ SELECT grade_optativa.id_disciplina,temp.ano_grade_optativa,modulos.id_modulo
     FROM temp NATURAL JOIN disciplinas 
     JOIN grade_optativa ON disciplinas.id_disciplina = grade_optativa.id_disciplina
     NATURAL JOIN modulos;
- 
+--INSERE OFERECIMENTO DE DISCIPLINAS 
+WITH temp (codigo_disciplina,ano_semestre,nome) AS
+(VALUES
+    ('MAC0101',2017.1,'Jef'),
+    ('MAC0105',2017.1,'Jef'),
+    ('MAC0110',2017.1,'Jef'),
+    ('MAC0329',2017.2,'Jef'),
+    ('MAT2453',2017.2,'Jef'),
+    ('MAT0112',2017.2,'Jef'),
+    ('MAC0239',2017.2,'Jef')
+)
+INSERT INTO
+    public.professores_oferecem_disciplinas(
+        id_pessoa,
+        nusp_professor,
+        id_disciplina,
+        ano_semestre)
+SELECT pessoas.id_pessoa,professores.nusp_professor,disciplinas.id_disciplina,temp.ano_semestre
+    FROM temp JOIN disciplinas ON temp.codigo_disciplina = disciplinas.codigo_disciplina 
+        JOIN pessoas ON pessoas.nome = temp.nome
+        JOIN professores ON pessoas.id_pessoa = professores.id_pessoa;
+-- INSERE CURSANDO 
+
+WITH temp (codigo_disciplina,ano_semestre,nome,nota) AS
+(VALUES
+    ('MAC0101',2017.1,'Renato',6),
+    ('MAC0105',2017.1,'Renato',6),
+    ('MAC0110',2017.1,'Renato',3),
+    ('MAC0329',2017.2,'Renato',6),
+    ('MAT2453',2017.2,'Renato',3),
+    ('MAT0112',2017.2,'Renato',null),
+    ('MAC0239',2017.2,'Renato',null)
+)
+INSERT INTO
+    public.alunos_cursam_disciplinas(
+        id_pessoa,
+        nusp_aluno,
+        id_oferecimento,
+        nota)
+SELECT alunos.id_pessoa,alunos.nusp_aluno,professores_oferecem_disciplinas.id_oferecimento,temp.nota
+    FROM temp JOIN disciplinas ON temp.codigo_disciplina = disciplinas.codigo_disciplina 
+        JOIN pessoas ON pessoas.nome = temp.nome
+        JOIN alunos ON pessoas.id_pessoa = alunos.id_pessoa
+        JOIN professores_oferecem_disciplinas ON professores_oferecem_disciplinas.id_disciplina = disciplinas.id_disciplina AND professores_oferecem_disciplinas.ano_semestre = temp.ano_semestre; 

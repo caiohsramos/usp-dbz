@@ -2,23 +2,23 @@
   <footer class="footer">
     <div id="main-div">
         <div id="title-div">
-            <p id="title">Contagem de créditos(Total: w/{{total_obrigatorias}})</p>
+            <p id="title">Contagem de créditos(Total: {{total_obrigatorias_cursadas}}/{{total_obrigatorias}})</p>
         </div>
         <div id="row1">
             <div id="column1">
                 <p>Obrigatórias</p>
-                <progress-bar :stepsDone="8" :stepsDoing="4" :totalSteps="total_obrigatorias"/>
+                <progress-bar :stepsDone="total_obrigatorias_cursadas" :stepsDoing="0" :totalSteps="total_obrigatorias"/>
             </div>
-            <div id="column2">
+            <div id="column2a">
                 <p>Eletivas</p>
-                <progress-bar :stepsDone="22" :stepsDoing="16" :totalSteps="56"/>
+                <progress-bar :stepsDone="0" :stepsDoing="0" :totalSteps="0"/>
             </div>
             <div id="column3">
                 <p>Livres</p>
                 <progress-bar :stepsDone="0" :stepsDoing="0" :totalSteps="24"/>
             </div>
         </div>
-    </div>
+   </div>
   </footer>
 </template>
 <script>
@@ -30,13 +30,18 @@ components: {
     data(){
         return{
             total_obrigatorias: 0,
+            total_obrigatorias_cursadas: 0,
         }
     },
     created(){
         this.$axios.$post("/rpc/creditos_obrigatorios_total",{"ano": '2017-01-01'})  
         .then(value => {
             this.total_obrigatorias=value;
-        })
+        });
+        this.$axios.$post("/rpc/creditos_obrigatorios_cursados",{"ano": '2017-01-01', "id": 24})  
+        .then(value => {
+            this.total_obrigatorias_cursadas=value;
+        });
     },
 }
 </script>
@@ -86,7 +91,7 @@ components: {
 
 }
 
-#column2{
+#column2a{
     display:flex;
     flex-direction:column;
     margin-left: 40px;

@@ -4,16 +4,16 @@
       <article class="message" :class=" accordionClasses">
         <div class="message-header" @click="toogleAccordion()">
             <i id= "column1" :class=" accordionArrow"></i>
-            <p id= "column2">{{name}}</p>
+            <span id= "column2">{{name}}</span>
         </div>
         <div class="message-body">
             <p>{{descr}}</p>
             <div class="inside_track" >
-                <div v-if="name=='Obrigatorias'">
+                <div  v-if="name=='Obrigatorias'">
                         <module name="" id=""/>
                 </div>
-                <div v-else>
-                    <div v-for="modulo of modulos" :key="modulo.id_modulo">
+                <div class="each_module_fora" v-else>
+                    <div class="each_module_dentro" v-for="modulo of modulos" :key="modulo.id_modulo">
                         <module :name="modulo.codigo_modulo" :id="modulo.id_modulo" />
                     </div>
                 </div>
@@ -73,17 +73,29 @@ export default {
 </script>
 
 <style lang="scss">
+.track{
+    margin-bottom:30px
+}
+.each_module_fora{
+    display: flex;
+    justify-content: center;
+}
+.each_module_dentro{
+    display: inline-block;
+    margin: 10px;
+}
 .inside_track{
     box-sizing: border-box;
     width: 85%;
     padding: 8px;
     border: 1px solid #ccc;
     box-shadow: 0 2px 2px #aaa;
-    margin: 15px auto;
-    /*display: flex;
-    flex-: column;
-    justify-content: center;
-    justify-content: flex-start;*/
+    margin: 5px auto;
+    /*display: inline-block;*/
+    display: flex;
+    flex-direction:column;
+    justify-content: space-around;
+    /*justify-content: flex-start;*/
 }
 
 .message {
@@ -96,7 +108,7 @@ export default {
     display:flex;
     flex-direction:row;
     justify-content: left;
-    margin-bottom: 40px;
+ /*   margin-bottom: 40px;*/
     width: 100%;
     cursor: pointer;
     color: blue;
@@ -124,12 +136,17 @@ export default {
  #column1{
      display:flex;
      flex-direction:column;
+     margin-right:5px;
 
  }
 
  #column2{
      display:flex;
      flex-direction:column;
+     margin-left:0;
+     font-size: 18pt;
+     color: #000;
+     vertical-align: text-top;
  }
 
 </style>

@@ -51,6 +51,7 @@ export default {
     border: 1px solid #ccc;
     box-shadow: 0 2px 2px #333;
     margin:  auto;*/
+    display: inline-block;
 }
 .inside_module{
 
