@@ -148,10 +148,12 @@ SELECT disciplinas.id_disciplina,temp.ano,temp.ele
 WITH temp (codigo_disciplina,ano_grade_optativa, codigo_modulo) AS
 (VALUES
     ('MAC0218',to_date('2017-01-01','YYYY-MM-DD'),'Des. Soft.'),
+    ('MAC0218',to_date('2017-01-01','YYYY-MM-DD'),'Sistemas'),
     ('MAC0332',to_date('2017-01-01','YYYY-MM-DD'),'Des. Soft.'),
     ('MAC0413',to_date('2017-01-01','YYYY-MM-DD'),'Des. Soft.'),
     ('MAC0426',to_date('2017-01-01','YYYY-MM-DD'),'BD'),
     ('MAC0472',to_date('2017-01-01','YYYY-MM-DD'),'Des. Soft.'),
+    ('MAC0472',to_date('2017-01-01','YYYY-MM-DD'),'Sistemas'),
     ('MAC0439',to_date('2017-01-01','YYYY-MM-DD'),'BD'),
     ('MAC0459',to_date('2017-01-01','YYYY-MM-DD'),'BD'),
     ('MAC0463',to_date('2017-01-01','YYYY-MM-DD'),'Par e Dis'),

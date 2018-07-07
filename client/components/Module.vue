@@ -3,7 +3,7 @@
         <h3>{{name}}</h3> 
         <div class="inside_module">
             <div v-for="disciplina of disciplinas" :key="disciplina.id_disciplina">
-                <Course :code="disciplina.codigo_disciplina" :name="disciplina.nome" status="cursada"/> 
+                <Course :code="disciplina.codigo_disciplina" :name="disciplina.nome" status="cursada" :id="disciplina.id_disciplina"/> 
             </div>
        </div>
     </div>

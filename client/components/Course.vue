@@ -1,8 +1,8 @@
 <template>
     <div class="course">
         <div id="row1">
-            <div class="course_status" @click="increment()">{{status}}</div>
-            <div class="course_counter">{{counter}}</div>
+            <div class="course_status" :id="st" @click="increment()">{{st}}</div>
+            <div class="course_counter">{{result}}</div>
         </div>
         <div>{{code}}</div>
         <div>{{name}}</div>
@@ -13,19 +13,38 @@
 
 <script>
 export default {
-    props: ["code","name", "status"],
+    props: ["code","name", "status","id"],
     //bloqueadas cursadas e planejada
 
     data(){
         return{
             counter: 0,
+            result: null,
+            st: "",
         }
     },
     methods:{
         increment(){
             this.counter++;
+            this.$store.commit("addDisc", { id: this.id , prop: this.counter});
+            this.result =this.$store.getters.disc_semestre(this.id);
         }
+    },
+    created(){
+        let u = this.$store.state.u_id;
+        this.$axios.$post("rpc/is_cursada",{"id_disc": this.id, "id_pess": u})
+            .then(value=> {
+                if(value){this.st = "cursada";}
+            });
+        this.$axios.$post("rpc/is_cursando",{"id_disc": this.id, "id_pess": u})
+            .then(value=> {
+                if(value){this.st = "cursando";}
+                else{this}
+            });
+    
+    
     }
+
 }
 
 </script>
@@ -40,14 +59,20 @@ export default {
     max-width: 100px;
     text-align: center;
 }
+#cursada{
+  background-color: $primary-color;
+}
+#cursando{
 
+  background-color: orange;
+}
 .course_status {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
 
-    background-color: $primary-color;
+  background-color: gray;
     color: $light-color;
     width: 5rem;
     height: 5rem;

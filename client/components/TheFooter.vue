@@ -2,12 +2,12 @@
   <footer class="footer">
     <div id="main-div">
         <div id="title-div">
-            <p id="title">Contagem de créditos(Total: {{total_obrigatorias_cursadas}}/{{total_obrigatorias}})</p>
+            <p id="title">Contagem de créditos(Total: {{obrigatorias_cursadas+eletivas_cursadas+livres_cursadas}}/{{obrigatorias+livres+eletivas}})</p>
         </div>
         <div id="row1">
             <div id="column1">
                 <p>Obrigatórias</p>
-                <progress-bar :stepsDone="total_obrigatorias_cursadas" :stepsDoing="0" :totalSteps="total_obrigatorias"/>
+                <progress-bar :stepsDone="obrigatorias_cursadas" :stepsDoing="obrigatorias_cursando" :totalSteps="obrigatorias"/>
             </div>
             <div id="column2a">
                 <p>Eletivas</p>
@@ -29,18 +29,53 @@ components: {
   },
     data(){
         return{
-            total_obrigatorias: 0,
-            total_obrigatorias_cursadas: 0,
+            obrigatorias: 0,
+            obrigatorias_cursadas: 0,
+            obrigatorias_cursando: 0,
+            eletivas: 56,
+            eletivas_cursadas: 0,
+            eletivas_cursando: 0,
+            livres: 24,
+            livres_cursadas: 0,
+            livres_cursando: 0,
         }
     },
     created(){
         this.$axios.$post("/rpc/creditos_obrigatorios_total",{"ano": '2017-01-01'})  
         .then(value => {
-            this.total_obrigatorias=value;
+            this.obrigatorias=value;
         });
-        this.$axios.$post("/rpc/creditos_obrigatorios_cursados",{"ano": '2017-01-01', "id": 24})  
+        this.$axios.$post("/rpc/creditos_obrigatorios_cursados",{"ano": '2017-01-01', "id": this.$store.state.u_id})  
         .then(value => {
-            this.total_obrigatorias_cursadas=value;
+            this.obrigatorias_cursadas=value;
+        });
+        this.$axios.$post("/rpc/creditos_obrigatorios_cursando",{"ano": '2017-01-01', "id": this.$store.state.u_id})  
+        .then(value => {
+            this.obrigatorias_cursando=value;
+        });
+        //this.$axios.$post("/rpc/creditos_eletivos_total",{"ano": '2017-01-01'})  
+        //.then(value => {
+        //    this.eletivos=value;
+        //});
+        this.$axios.$post("/rpc/creditos_eletivos_cursados",{"ano": '2017-01-01', "id": this.$store.state.u_id})  
+        .then(value => {
+            this.eletivas_cursadas=value;
+        });
+        this.$axios.$post("/rpc/creditos_eletivos_cursando",{"ano": '2017-01-01', "id": 24})  
+        .then(value => {
+            this.eletivas_cursando=value;
+        });
+        //this.$axios.$post("/rpc/creditos_livres_total",{"ano": '2017-01-01'})  
+        //.then(value => {
+        //    this.livres=value;
+        //});
+        this.$axios.$post("/rpc/creditos_livres_cursados",{"ano": '2017-01-01', "id": this.$store.state.u_id})  
+        .then(value => {
+            this.livres_cursadas=value;
+        });
+        this.$axios.$post("/rpc/creditos_livres_cursando",{"ano": '2017-01-01', "id": this.$store.state.u_id})  
+        .then(value => {
+            this.livres_cursando=value;
         });
     },
 }
