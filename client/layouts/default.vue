@@ -49,13 +49,13 @@ html {
   /* Grid to position the cell itself */
   grid-area: main;
   justify-self: stretch;
-
+  
   /* Flexbox to align the content in the cell */
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: center;
-
+  /*overflow: auto;*/
   /* FIXME: Border to highlight */
 }
 </style>

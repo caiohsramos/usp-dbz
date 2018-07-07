@@ -35,7 +35,7 @@ export default {
 
     data(){
         return{
-            isOpen: true,
+            isOpen: false,
             modulos:[] ,
             disciplinas: [],
         };
@@ -47,10 +47,11 @@ export default {
     },
 
     created(){
-            this.$axios.$get('/modulos?id_trilha=eq.'+this.id)
-                .then(value => {
-            this.modulos=value;
-            })
+        this.$axios.$get('/modulos?id_trilha=eq.'+this.id)
+            .then(value => {
+                this.modulos=value;
+            });
+        if(this.name == "Obrigatorias"){this.isOpen=true};    
     },
     computed:{
        accordionClasses: function() {

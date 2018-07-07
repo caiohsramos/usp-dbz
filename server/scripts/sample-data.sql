@@ -2,19 +2,19 @@
 --- Insere disciplinas
 --------------------------------------------------------------------------------
 
-INSERT INTO
-public.disciplinas(
-  codigo_disciplina,
-  creditos_aula,
-  creditos_trabalho,
-  carga_horaria,
-  ativacao)
-VALUES
-( 'MAC0101', 4, 0, 60, '2015-01-01' ),
-( 'MAC0110', 4, 0, 60, '1998-01-01' ),
-( 'MAC0121', 4, 0, 60, '2015-01-01' ),
-( 'MAC0350', 4, 0, 60, '2017-06-01' ),
-( 'MAC0426', 4, 0, 60, '1998-01-01' );
+--INSERT INTO
+--public.disciplinas(
+--  codigo_disciplina,
+--  creditos_aula,
+--  creditos_trabalho,
+--  carga_horaria,
+--  ativacao)
+--VALUES
+--( 'MAC0101', 4, 0, 60, '2015-01-01' ),
+--( 'MAC0110', 4, 0, 60, '1998-01-01' ),
+--( 'MAC0121', 4, 0, 60, '2015-01-01' ),
+--( 'MAC0350', 4, 0, 60, '2017-06-01' ),
+--( 'MAC0426', 4, 0, 60, '1998-01-01' );
 
 --------------------------------------------------------------------------------
 --- Insere pessoas em seus respectivos cargos
