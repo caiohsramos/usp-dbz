@@ -3,7 +3,7 @@
     <p>Login</p>
     <input type="email" v-model="email"/>
     <input type="password" v-model="password"/>
-
+    <br/>
     <button type="submit" @click="login" @submit.prevent>
       Login
     </button>
@@ -29,8 +29,8 @@ export default {
       this.$store.commit("setToken", { token: t});
       if(this.$store.getters.isAuthenticated){
           this.$store.commit("setEmail", { email: this.email});
-      }
-	//	this.$router.go({path: "/disciplinas"})
+      };
+		this.$router.go({path: "/"});
     }
   }
 }
@@ -38,5 +38,6 @@ export default {
 
 <style lang="scss">
 .aside__login {
+    margin: auto;
 }
 </style>

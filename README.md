@@ -4,6 +4,13 @@
 * Igor Fratel Santana - NUSP 9793565
 * Guilherme Feulo do Espirito Santo - NUSP 6431749
 
+##Informações para a correção
+* Os RPC's impmentados fora inseridos na pasta initdb para que sejam criados junto com o banco.
+* na pasta server/scripts, existem um novos scripts SQL: additional-data, que povoa o banco de dados com disciplinas, e suas inserções e grade\_optativa e grade\_obrigatoria. O banco foi povoado com disciplinas cursadas e em curso para o usuario renatocf@ime.usp.br (senha: 12345).
+
+* Os CRUDS para disciplinas estão na URL: /disciplinas
+
+
 This repository is a monorepo and requires [docker][1] and
 [docker-compose][2] to run the services.
 

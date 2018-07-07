@@ -1,9 +1,11 @@
 <template>
     <div id="app">
+        <div class="dentro">
         <div><Track name="Obrigatorias" /></div> 
         <div v-for="trilha of trilhas" :key="trilha.id_trilha">
             <Track :name="trilha.nome" :descr="trilha.descricao" :id="trilha.id_trilha"/>
-       </div> 
+       </div>
+        </div>
     </div>
 </template>
 
@@ -38,5 +40,8 @@ export default {
 #app{
     width:100%;
     justify-content: right;
+}
+.dentro{
+    padding:50px;
 }
 </style>

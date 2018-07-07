@@ -1,7 +1,9 @@
 <template>
   <aside class="aside">
-    <login v-if="!this.$store.getters.isAuthenticated"/>
-    <logout v-else />
+      <div class="top">
+        <login v-if="!this.$store.getters.isAuthenticated"/>
+        <logout v-else />
+      </div>
   </aside>
 </template>
 
@@ -27,7 +29,14 @@ export default {
   flex-direction: column;
   justify-content: start;
   align-items: center;
-
+  border:1px solid #4C72CB;
   /* FIXME: Border to highlight */
 }
+.top {
+      background: #4C72CB;
+      display:flex;  
+      width: fill;
+          height: 200px;
+          justify-content:center;
+      }
 </style>

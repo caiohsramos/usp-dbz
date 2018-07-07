@@ -127,3 +127,16 @@ SELECT CASE WHEN alunos_cursam_disciplinas.nota >=5 THEN TRUE ELSE FALSE END  FR
                    alunos.nusp_aluno = alunos_cursam_disciplinas.nusp_aluno AND
                    alunos.id_pessoa = id_pess
  $$ LANGUAGE SQL;
+--DISCIPLINA em curso 
+CREATE OR REPLACE FUNCTION is_cursando(id_disc bigint, id_pess bigint)
+ RETURNS BOOLEAN AS $$
+SELECT CASE WHEN alunos_cursam_disciplinas.nota IS NULL THEN TRUE ELSE FALSE END  FROM
+                    alunos_cursam_disciplinas,
+                    professores_oferecem_disciplinas,
+                    alunos
+            WHERE  professores_oferecem_disciplinas.id_disciplina = id_disc AND
+                   professores_oferecem_disciplinas.id_oferecimento = alunos_cursam_disciplinas.id_oferecimento AND
+                   alunos.id_pessoa = alunos_cursam_disciplinas.id_pessoa AND
+                   alunos.nusp_aluno = alunos_cursam_disciplinas.nusp_aluno AND
+                   alunos.id_pessoa = id_pess
+ $$ LANGUAGE SQL;
