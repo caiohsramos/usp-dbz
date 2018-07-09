@@ -12,7 +12,9 @@ export default () => {
     state: {
       email: '',
       token: '',
+      ingresso: 0,
       u_id: null,
+      temp: null,
       disc_state: {}, 
     },
 
@@ -39,6 +41,15 @@ export default () => {
       },
       addDisc(state, {id , prop}){
           state.disc_state[id] = prop;
+      },
+      setDisc_state(state, {value}){
+          state.disc_state = value;
+      },
+      setTemp(state, {value}){
+          state.temp = value;
+      },
+      setIngresso(state, { ano }){
+          state.ingresso = ano;
       }
     }
   });

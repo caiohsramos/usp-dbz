@@ -2,7 +2,7 @@
     <div class="course">
         <div id="row1">
             <div class="course_status" :id="st" @click="increment()">{{st}}</div>
-            <div class="course_counter">{{result}}</div>
+            <div class="course_counter">{{counter}}</div>
         </div>
         <div>{{code}}</div>
         <div>{{name}}</div>
@@ -13,33 +13,40 @@
 
 <script>
 export default {
-    props: ["code","name", "status","id"],
+    props: ["code","name", "status","id","plan"],
     //bloqueadas cursadas e planejada
 
     data(){
         return{
-            counter: 0,
+            counter: null,
             result: null,
             st: "",
+            enabled: true,
         }
     },
     methods:{
         increment(){
-            this.counter++;
-            this.$store.commit("addDisc", { id: this.id , prop: this.counter});
+            if(this.enabled){
+                this.counter =(this.counter+1)  % 8;
+                this.$store.commit("addDisc", { id: this.id , prop: this.counter});
             this.result =this.$store.getters.disc_semestre(this.id);
+            }
         }
     },
     created(){
         let u = this.$store.state.u_id;
+        let ano = this.$store.state.ingresso;
+        if(this.plan!=null){
+            this.counter = (this.plan-ano)*2;
+            this.$store.commit("addDisc",{id: this.id, prop:this.counter});
+        }
         this.$axios.$post("rpc/is_cursada",{"id_disc": this.id, "id_pess": u})
             .then(value=> {
-                if(value){this.st = "cursada";}
+                if(value){this.st = "cursada";this.counter = null; this.enabled=false}
             });
         this.$axios.$post("rpc/is_cursando",{"id_disc": this.id, "id_pess": u})
             .then(value=> {
-                if(value){this.st = "cursando";}
-                else{this}
+                if(value){this.st = "cursando";this.counter = null; this.enabled=false}
             });
     
     

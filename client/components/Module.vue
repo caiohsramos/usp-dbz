@@ -3,7 +3,7 @@
         <h3>{{name}}</h3> 
         <div class="inside_module">
             <div v-for="disciplina of disciplinas" :key="disciplina.id_disciplina">
-                <Course :code="disciplina.codigo_disciplina" :name="disciplina.nome" status="cursada" :id="disciplina.id_disciplina"/> 
+                <Course :code="disciplina.codigo_disciplina" :name="disciplina.nome" status="cursada" :id="disciplina.id_disciplina" :plan="disciplina.ano_semestre"/> 
             </div>
        </div>
     </div>
@@ -26,17 +26,36 @@ export default {
         };
     },
     created(){
-        if(this.name ==""){
-            this.$axios.$post('/rpc/list_obrigatorias',{})   
-                .then(value => {
-            this.disciplinas=value;
-            })
+        if(this.$store.getters.isAuthenticated){
+            let u = this.$store.state.u_id;
+            if(this.name ==""){
+                this.$axios.$post('/rpc/list_obrigatorias_log',{"id": u})   
+                    .then(value => {
+                this.disciplinas=value;
+                this.$store.commit("setTemp",{value: this.disciplinas})
+                })
+            }
+            else{
+                this.$axios.$post("/rpc/list_disciplinas_modulos_log",{"id": this.id, "u": u })   
+            .then(value => {
+                    this.disciplinas=value;
+                })
+            }
         }
         else{
-            this.$axios.$post("/rpc/list_disciplinas_modulos",{"id": this.id})   
-        .then(value => {
+            if(this.name ==""){
+                this.$axios.$post('/rpc/list_obrigatorias',{"ano": 2012})   
+                    .then(value => {
                 this.disciplinas=value;
-            })
+                })
+            }
+            else{
+                this.$axios.$post("/rpc/list_disciplinas_modulos",{"id": this.id, "ano": 2012})   
+            .then(value => {
+                    this.disciplinas=value;
+                })
+            }
+
         }
     }
 }

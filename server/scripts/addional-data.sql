@@ -63,7 +63,10 @@ VALUES
     ('MAT2453',4,0,60,'1999-01-01','Calculo Diferencia e Integral I'),
     ('MAT0112',4,0,60,'1999-01-01','Vetores e Geometria'),
     ('MAC0239',4,0,60,'1999-01-01','Introducao a Logica e verificacao de programas'),
+    ('MAC0216',4,0,60,'1999-01-01','Tecnicas de Programacao I'),
+    ('MAT2454',4,0,60,'1999-01-01','Calculo Diferencia e Integral II'),
     ('MAC0218',4,2,90,'1999-01-01','Tecnicas de programacao II'),
+    ('MAT0122',4,0,60,'1999-01-01','Algebra Linear I'),
     ('MAC0332',4,0,60,'1999-01-01','Engenharia de Software'),
     ('MAC0413',4,0,60,'1999-01-01','Topicos avancados em POO'),
     ('MAC0426',4,0,60,'1999-01-01','Sistema de Bancos de Dados'),
@@ -91,13 +94,13 @@ VALUES
 -- INSERE OBRIGATORIAS
 WITH temp (cod,ano) AS
 (VALUES
-    ('MAC0101',to_date('2017-01-01','YYYY-MM-DD')),
-    ('MAC0105',to_date('2017-01-01','YYYY-MM-DD')),
-    ('MAC0110',to_date('2017-01-01','YYYY-MM-DD')),
-    ('MAC0329',to_date('2017-01-01','YYYY-MM-DD')),
-    ('MAT2453',to_date('2017-01-01','YYYY-MM-DD')),
-    ('MAT0112',to_date('2017-01-01','YYYY-MM-DD')),
-    ('MAC0239',to_date('2017-01-01','YYYY-MM-DD'))
+    ('MAC0101',to_date('2012-03-01','YYYY-MM-DD')),
+    ('MAC0105',to_date('2012-03-01','YYYY-MM-DD')),
+    ('MAC0110',to_date('2012-03-01','YYYY-MM-DD')),
+    ('MAC0329',to_date('2012-03-01','YYYY-MM-DD')),
+    ('MAT2453',to_date('2012-03-01','YYYY-MM-DD')),
+    ('MAT0112',to_date('2012-03-01','YYYY-MM-DD')),
+    ('MAC0239',to_date('2012-03-01','YYYY-MM-DD'))
 )
 INSERT INTO
     public.grade_obrigatoria(
@@ -110,30 +113,30 @@ SELECT disciplinas.id_disciplina,temp.ano
 --INSERE OPTATIVA ELETIVAS
 WITH temp (cod,ano, ele) AS
 (VALUES
-    ('MAC0218',to_date('2017-01-01','YYYY-MM-DD'),TRUE),
-    ('MAC0332',to_date('2017-01-01','YYYY-MM-DD'),TRUE),
-    ('MAC0413',to_date('2017-01-01','YYYY-MM-DD'),TRUE),
-    ('MAC0426',to_date('2017-01-01','YYYY-MM-DD'),TRUE),
-    ('MAC0472',to_date('2017-01-01','YYYY-MM-DD'),TRUE),
-    ('MAC0439',to_date('2017-01-01','YYYY-MM-DD'),TRUE),
-    ('MAC0459',to_date('2017-01-01','YYYY-MM-DD'),TRUE),
-    ('MAC0463',to_date('2017-01-01','YYYY-MM-DD'),TRUE),
-    ('MAC0344',to_date('2017-01-01','YYYY-MM-DD'),TRUE),
-    ('MAC0425',to_date('2017-01-01','YYYY-MM-DD'),TRUE),
-    ('MAC0444',to_date('2017-01-01','YYYY-MM-DD'),TRUE),
-    ('MAC0460',to_date('2017-01-01','YYYY-MM-DD'),TRUE),
-    ('MAC0414',to_date('2017-01-01','YYYY-MM-DD'),TRUE),
-    ('MAT0359',to_date('2017-01-01','YYYY-MM-DD'),TRUE),
-    ('MAC0317',to_date('2017-01-01','YYYY-MM-DD'),TRUE),
-    ('MAC0219',to_date('2017-01-01','YYYY-MM-DD'),TRUE),
-    ('MAE0221',to_date('2017-01-01','YYYY-MM-DD'),TRUE),
-    ('MAE0312',to_date('2017-01-01','YYYY-MM-DD'),TRUE),
-    ('MAE0228',to_date('2017-01-01','YYYY-MM-DD'),TRUE),
-    ('MAC0315',to_date('2017-01-01','YYYY-MM-DD'),TRUE),
-    ('MAC0325',to_date('2017-01-01','YYYY-MM-DD'),TRUE),
-    ('MAC0328',to_date('2017-01-01','YYYY-MM-DD'),TRUE),
-    ('MAC0320',to_date('2017-01-01','YYYY-MM-DD'),TRUE),
-    ('MAT0206',to_date('2017-01-01','YYYY-MM-DD'),TRUE)
+    ('MAC0218',to_date('2012-03-01','YYYY-MM-DD'),TRUE),
+    ('MAC0332',to_date('2012-03-01','YYYY-MM-DD'),TRUE),
+    ('MAC0413',to_date('2012-03-01','YYYY-MM-DD'),TRUE),
+    ('MAC0426',to_date('2012-03-01','YYYY-MM-DD'),TRUE),
+    ('MAC0472',to_date('2012-03-01','YYYY-MM-DD'),TRUE),
+    ('MAC0439',to_date('2012-03-01','YYYY-MM-DD'),TRUE),
+    ('MAC0459',to_date('2012-03-01','YYYY-MM-DD'),TRUE),
+    ('MAC0463',to_date('2012-03-01','YYYY-MM-DD'),TRUE),
+    ('MAC0344',to_date('2012-03-01','YYYY-MM-DD'),TRUE),
+    ('MAC0425',to_date('2012-03-01','YYYY-MM-DD'),TRUE),
+    ('MAC0444',to_date('2012-03-01','YYYY-MM-DD'),TRUE),
+    ('MAC0460',to_date('2012-03-01','YYYY-MM-DD'),TRUE),
+    ('MAC0414',to_date('2012-03-01','YYYY-MM-DD'),TRUE),
+    ('MAT0359',to_date('2012-03-01','YYYY-MM-DD'),TRUE),
+    ('MAC0317',to_date('2012-03-01','YYYY-MM-DD'),TRUE),
+    ('MAC0219',to_date('2012-03-01','YYYY-MM-DD'),TRUE),
+    ('MAE0221',to_date('2012-03-01','YYYY-MM-DD'),TRUE),
+    ('MAE0312',to_date('2012-03-01','YYYY-MM-DD'),TRUE),
+    ('MAE0228',to_date('2012-03-01','YYYY-MM-DD'),TRUE),
+    ('MAC0315',to_date('2012-03-01','YYYY-MM-DD'),TRUE),
+    ('MAC0325',to_date('2012-03-01','YYYY-MM-DD'),TRUE),
+    ('MAC0328',to_date('2012-03-01','YYYY-MM-DD'),TRUE),
+    ('MAC0320',to_date('2012-03-01','YYYY-MM-DD'),TRUE),
+    ('MAT0206',to_date('2012-03-01','YYYY-MM-DD'),TRUE)
 )
 INSERT INTO
     public.grade_optativa(
@@ -147,40 +150,40 @@ SELECT disciplinas.id_disciplina,temp.ano,temp.ele
 -- INSERE AS DISCIPLINAS NOS MODULOS
 WITH temp (codigo_disciplina,ano_grade_optativa, codigo_modulo) AS
 (VALUES
-    ('MAC0218',to_date('2017-01-01','YYYY-MM-DD'),'Des. Soft.'),
-    ('MAC0218',to_date('2017-01-01','YYYY-MM-DD'),'Sistemas'),
-    ('MAC0332',to_date('2017-01-01','YYYY-MM-DD'),'Des. Soft.'),
-    ('MAC0413',to_date('2017-01-01','YYYY-MM-DD'),'Des. Soft.'),
-    ('MAC0426',to_date('2017-01-01','YYYY-MM-DD'),'BD'),
-    ('MAC0472',to_date('2017-01-01','YYYY-MM-DD'),'Des. Soft.'),
-    ('MAC0472',to_date('2017-01-01','YYYY-MM-DD'),'Sistemas'),
-    ('MAC0439',to_date('2017-01-01','YYYY-MM-DD'),'BD'),
-    ('MAC0459',to_date('2017-01-01','YYYY-MM-DD'),'BD'),
-    ('MAC0463',to_date('2017-01-01','YYYY-MM-DD'),'Par e Dis'),
-    ('MAC0344',to_date('2017-01-01','YYYY-MM-DD'),'Par e Dis'),
-    ('MAC0425',to_date('2017-01-01','YYYY-MM-DD'),'Obrig.'),
-    ('MAC0444',to_date('2017-01-01','YYYY-MM-DD'),'Intro IA'),
-    ('MAC0460',to_date('2017-01-01','YYYY-MM-DD'),'Intro IA'),
-    ('MAC0459',to_date('2017-01-01','YYYY-MM-DD'),'Intro IA'),
-    ('MAC0414',to_date('2017-01-01','YYYY-MM-DD'),'Teoria IA'),
-    ('MAT0359',to_date('2017-01-01','YYYY-MM-DD'),'Teoria IA'),
-    ('MAC0317',to_date('2017-01-01','YYYY-MM-DD'),'Nucleo 1'),
-    ('MAC0219',to_date('2017-01-01','YYYY-MM-DD'),'Nucleo 1'),
-    ('MAE0221',to_date('2017-01-01','YYYY-MM-DD'),'Nucleo 1'),
-    ('MAC0426',to_date('2017-01-01','YYYY-MM-DD'),'Nucleo 1'),
-    ('MAC0460',to_date('2017-01-01','YYYY-MM-DD'),'Nucleo 1'),
-    ('MAE0312',to_date('2017-01-01','YYYY-MM-DD'),'Nucleo 2'),
-    ('MAE0228',to_date('2017-01-01','YYYY-MM-DD'),'Nucleo 2'),
-    ('MAC0315',to_date('2017-01-01','YYYY-MM-DD'),'Nucleo 3'),
-    ('MAC0325',to_date('2017-01-01','YYYY-MM-DD'),'Nucleo 3'),
-    ('MAC0328',to_date('2017-01-01','YYYY-MM-DD'),'Algoritmos'),
-    ('MAC0414',to_date('2017-01-01','YYYY-MM-DD'),'Algoritmos'),
-    ('MAC0315',to_date('2017-01-01','YYYY-MM-DD'),'Otimizacao'),
-    ('MAC0325',to_date('2017-01-01','YYYY-MM-DD'),'Otimizacao'),
-    ('MAC0325',to_date('2017-01-01','YYYY-MM-DD'),'Otim. 2'),
-    ('MAC0320',to_date('2017-01-01','YYYY-MM-DD'),'Mat discr'),
-    ('MAT0206',to_date('2017-01-01','YYYY-MM-DD'),'Mat discr'),
-    ('MAC0414',to_date('2017-01-01','YYYY-MM-DD'),'Mat discr2')
+    ('MAC0218',to_date('2012-03-01','YYYY-MM-DD'),'Des. Soft.'),
+    ('MAC0218',to_date('2012-03-01','YYYY-MM-DD'),'Sistemas'),
+    ('MAC0332',to_date('2012-03-01','YYYY-MM-DD'),'Des. Soft.'),
+    ('MAC0413',to_date('2012-03-01','YYYY-MM-DD'),'Des. Soft.'),
+    ('MAC0426',to_date('2012-03-01','YYYY-MM-DD'),'BD'),
+    ('MAC0472',to_date('2012-03-01','YYYY-MM-DD'),'Des. Soft.'),
+    ('MAC0472',to_date('2012-03-01','YYYY-MM-DD'),'Sistemas'),
+    ('MAC0439',to_date('2012-03-01','YYYY-MM-DD'),'BD'),
+    ('MAC0459',to_date('2012-03-01','YYYY-MM-DD'),'BD'),
+    ('MAC0463',to_date('2012-03-01','YYYY-MM-DD'),'Par e Dis'),
+    ('MAC0344',to_date('2012-03-01','YYYY-MM-DD'),'Par e Dis'),
+    ('MAC0425',to_date('2012-03-01','YYYY-MM-DD'),'Obrig.'),
+    ('MAC0444',to_date('2012-03-01','YYYY-MM-DD'),'Intro IA'),
+    ('MAC0460',to_date('2012-03-01','YYYY-MM-DD'),'Intro IA'),
+    ('MAC0459',to_date('2012-03-01','YYYY-MM-DD'),'Intro IA'),
+    ('MAC0414',to_date('2012-03-01','YYYY-MM-DD'),'Teoria IA'),
+    ('MAT0359',to_date('2012-03-01','YYYY-MM-DD'),'Teoria IA'),
+    ('MAC0317',to_date('2012-03-01','YYYY-MM-DD'),'Nucleo 1'),
+    ('MAC0219',to_date('2012-03-01','YYYY-MM-DD'),'Nucleo 1'),
+    ('MAE0221',to_date('2012-03-01','YYYY-MM-DD'),'Nucleo 1'),
+    ('MAC0426',to_date('2012-03-01','YYYY-MM-DD'),'Nucleo 1'),
+    ('MAC0460',to_date('2012-03-01','YYYY-MM-DD'),'Nucleo 1'),
+    ('MAE0312',to_date('2012-03-01','YYYY-MM-DD'),'Nucleo 2'),
+    ('MAE0228',to_date('2012-03-01','YYYY-MM-DD'),'Nucleo 2'),
+    ('MAC0315',to_date('2012-03-01','YYYY-MM-DD'),'Nucleo 3'),
+    ('MAC0325',to_date('2012-03-01','YYYY-MM-DD'),'Nucleo 3'),
+    ('MAC0328',to_date('2012-03-01','YYYY-MM-DD'),'Algoritmos'),
+    ('MAC0414',to_date('2012-03-01','YYYY-MM-DD'),'Algoritmos'),
+    ('MAC0315',to_date('2012-03-01','YYYY-MM-DD'),'Otimizacao'),
+    ('MAC0325',to_date('2012-03-01','YYYY-MM-DD'),'Otimizacao'),
+    ('MAC0325',to_date('2012-03-01','YYYY-MM-DD'),'Otim. 2'),
+    ('MAC0320',to_date('2012-03-01','YYYY-MM-DD'),'Mat discr'),
+    ('MAT0206',to_date('2012-03-01','YYYY-MM-DD'),'Mat discr'),
+    ('MAC0414',to_date('2012-03-01','YYYY-MM-DD'),'Mat discr2')
 )
 INSERT INTO
     public.optativas_compoem_modulos(
@@ -194,13 +197,14 @@ SELECT grade_optativa.id_disciplina,temp.ano_grade_optativa,modulos.id_modulo
 --INSERE OFERECIMENTO DE DISCIPLINAS 
 WITH temp (codigo_disciplina,ano_semestre,nome) AS
 (VALUES
-    ('MAC0101',2017.1,'Jef'),
-    ('MAC0105',2017.1,'Jef'),
-    ('MAC0110',2017.1,'Jef'),
-    ('MAC0329',2017.2,'Jef'),
-    ('MAT2453',2017.2,'Jef'),
-    ('MAT0112',2017.2,'Jef'),
-    ('MAC0239',2017.2,'Jef')
+    ('MAC0101',2012.0,'Jef'),
+    ('MAC0105',2012.0,'Jef'),
+    ('MAC0110',2012.0,'Jef'),
+    ('MAC0425',2012.0,'Jef'),
+    ('MAC0329',2012.5,'Jef'),
+    ('MAT2453',2013.5,'Jef'),
+    ('MAT0112',2013.5,'Jef'),
+    ('MAC0239',2013.0,'Jef')
 )
 INSERT INTO
     public.professores_oferecem_disciplinas(
@@ -216,13 +220,14 @@ SELECT pessoas.id_pessoa,professores.nusp_professor,disciplinas.id_disciplina,te
 
 WITH temp (codigo_disciplina,ano_semestre,nome,nota) AS
 (VALUES
-    ('MAC0101',2017.1,'Renato',6),
-    ('MAC0105',2017.1,'Renato',6),
-    ('MAC0110',2017.1,'Renato',3),
-    ('MAC0329',2017.2,'Renato',6),
-    ('MAT2453',2017.2,'Renato',3),
-    ('MAT0112',2017.2,'Renato',null),
-    ('MAC0239',2017.2,'Renato',null)
+    ('MAC0101',2012.0,'Renato',6),
+    ('MAC0105',2012.0,'Renato',6),
+    ('MAC0425',2012.0,'Renato',8),
+    ('MAC0110',2012.0,'Renato',3),
+    ('MAC0329',2012.5,'Renato',6),
+    ('MAT2453',2013.5,'Renato',null),
+    ('MAT0112',2013.5,'Renato',null),
+    ('MAC0239',2013.0,'Renato',3)
 )
 INSERT INTO
     public.alunos_cursam_disciplinas(
@@ -235,3 +240,45 @@ SELECT alunos.id_pessoa,alunos.nusp_aluno,professores_oferecem_disciplinas.id_of
         JOIN pessoas ON pessoas.nome = temp.nome
         JOIN alunos ON pessoas.id_pessoa = alunos.id_pessoa
         JOIN professores_oferecem_disciplinas ON professores_oferecem_disciplinas.id_disciplina = disciplinas.id_disciplina AND professores_oferecem_disciplinas.ano_semestre = temp.ano_semestre; 
+
+--INSERE PREREQUISITOS
+
+WITH temp (id_dis,id_pre) AS
+(VALUES
+    ('MAC0216','MAC0110'),
+    ('MAC0239','MAC0110'),
+    ('MAT2454','MAT2453'),
+    ('MAT0122','MAT0112')
+)
+INSERT INTO
+    public.prerequisitos(
+        id_disciplina,
+        id_prerequisito)
+SELECT a.id_disciplina, b.id_disciplina
+    FROM disciplinas a,
+         disciplinas b,
+         temp
+    WHERE a.codigo_disciplina = temp.id_dis AND
+          b.codigo_disciplina = temp.id_pre; 
+
+--INSERE Plano
+WITH temp (nome, codigo_disciplina,ano_semestre) AS
+(VALUES
+    ('Renato','MAC0110',2014.5),
+    ('Renato','MAC0239',2014.0),
+    ('Renato','MAC0414',2015.0)
+)
+INSERT INTO
+    public.alunos_planejam_disciplinas(
+        id_pessoa,
+        nusp_aluno,
+        id_disciplina,
+        ano_semestre)
+SELECT a.id_pessoa,a.nusp_aluno,d.id_disciplina,temp.ano_semestre
+    FROM pessoas p,
+         alunos a,
+         disciplinas d,
+         temp
+    WHERE d.codigo_disciplina = temp.codigo_disciplina AND
+          p.nome = temp.nome AND
+          a.id_pessoa = p.id_pessoa; 

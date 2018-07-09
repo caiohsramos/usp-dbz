@@ -46,8 +46,9 @@ WITH temp (id_disciplina,codigo_disciplina, creditos_aula, nome) AS (
         dis.id_disciplina = opt.id_disciplina AND
         opt.ano_grade_optativa = alunos.turma_ingresso AND
         alunos.id_pessoa = u)
-SELECT temp.*, plan.ano_semestre FROM
-temp LEFT JOIN alunos_planejam_disciplinas AS plan ON temp.id_disciplina = plan.id_disciplina;
+SELECT DISTINCT ON (temp.id_disciplina) temp.*, plan.ano_semestre FROM
+temp LEFT JOIN alunos_planejam_disciplinas AS plan ON temp.id_disciplina = plan.id_disciplina
+ORDER BY temp.id_disciplina, plan.id_plano DESC
 $$ LANGUAGE SQL;
  
 --CREDITOS OBRIGATORIOS TOTAL
@@ -196,16 +197,16 @@ SELECT CASE WHEN alunos_cursam_disciplinas.nota IS NULL THEN TRUE ELSE FALSE END
                    alunos.id_pessoa = id_pess
  $$ LANGUAGE SQL;
 -- SALVA PLANO
---CREATE OR REPLACE FUNCTION salva_plano(tb regclass) --id bigint , ano_semestre numeric(5,1))
---  RETURNS VOID AS $$
---    INSERT INTO teste VALUES (6,2015)
---SELECT CASE WHEN alunos_cursam_disciplinas.nota IS NULL THEN TRUE ELSE FALSE END  FROM
---                    alunos_cursam_disciplinas,
---                    professores_oferecem_disciplinas,
---                    alunos
---            WHERE  professores_oferecem_disciplinas.id_disciplina = id_disc AND
---                   professores_oferecem_disciplinas.id_oferecimento = alunos_cursam_disciplinas.id_oferecimento AND
---                   alunos.id_pessoa = alunos_cursam_disciplinas.id_pessoa AND
---                   alunos.nusp_aluno = alunos_cursam_disciplinas.nusp_aluno AND
---                   alunos.id_pessoa = id_pess
- --$$ LANGUAGE SQL;
+CREATE OR REPLACE FUNCTION salva_plano(id_disciplina bigint , id_pessoa bigint, ano_semestre numeric(5,1))
+  RETURNS VOID AS $$
+        WITH temp(id_dis, id_pess, ano) AS (VALUES (id_disciplina,id_pessoa,ano_semestre))
+        INSERT INTO alunos_planejam_disciplinas(
+                        id_pessoa,
+                        nusp_aluno,
+                        id_disciplina,
+                        ano_semestre)
+        SELECT alunos.id_pessoa,alunos.nusp_aluno,temp.id_dis,temp.ano FROM
+               alunos,
+               temp
+        WHERE alunos.id_pessoa = temp.id_pess;
+ $$ LANGUAGE SQL;

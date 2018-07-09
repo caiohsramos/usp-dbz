@@ -15,7 +15,9 @@ export default {
   data() {
     return {
       email: '',
-      password: ''
+      password: '',
+      id: '',
+      ano: ''
     }
   },
 
@@ -24,13 +26,18 @@ export default {
       // TODO: Implement login logic here
       // TIP: Method is `async` because it should use "await this.$axios"
 		let t = await this.$axios.$post("/rpc/autenticar", {email:this.email, senha: this.password, });
-
+        let i = await this.$axios.$post("rpc/id_pessoa",{email: this.email});
       // Save token at global vuex store to be used by auth middleware
       this.$store.commit("setToken", { token: t});
       if(this.$store.getters.isAuthenticated){
-          this.$store.commit("setEmail", { email: this.email});
-      };
-		this.$router.go({path: "/"});
+          this.$store.commit("setEmail", { email: this.email});      
+          this.$store.commit("setUid",{id: i[0].id}) 
+          await this.$axios.$post("rpc/ingresso",{"id": i[0].id })
+            .then(value => {
+                this.$store.commit("setIngresso",{ano: value})
+            });
+      }
+	  this.$router.go({path: "/"});
     }
   }
 }

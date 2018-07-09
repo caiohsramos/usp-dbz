@@ -11,11 +11,11 @@
             </div>
             <div id="column2a">
                 <p>Eletivas</p>
-                <progress-bar :stepsDone="0" :stepsDoing="0" :totalSteps="0"/>
+                <progress-bar :stepsDone="eletivas_cursadas" :stepsDoing="eletivas_cursando" :totalSteps="56"/>
             </div>
             <div id="column3">
                 <p>Livres</p>
-                <progress-bar :stepsDone="0" :stepsDoing="0" :totalSteps="24"/>
+                <progress-bar :stepsDone="livres_cursadas" :stepsDoing="livres_cursando" :totalSteps="24"/>
             </div>
         </div>
    </div>
@@ -41,15 +41,16 @@ components: {
         }
     },
     created(){
-        this.$axios.$post("/rpc/creditos_obrigatorios_total",{"ano": '2017-01-01'})  
+        let u = this.$store.state.u_id;
+        this.$axios.$post("/rpc/creditos_obrigatorios_total",{"id": u})  
         .then(value => {
             this.obrigatorias=value;
         });
-        this.$axios.$post("/rpc/creditos_obrigatorios_cursados",{"ano": '2017-01-01', "id": this.$store.state.u_id})  
+        this.$axios.$post("/rpc/creditos_obrigatorios_cursados",{"id": u})  
         .then(value => {
             this.obrigatorias_cursadas=value;
         });
-        this.$axios.$post("/rpc/creditos_obrigatorios_cursando",{"ano": '2017-01-01', "id": this.$store.state.u_id})  
+        this.$axios.$post("/rpc/creditos_obrigatorios_cursando",{"id": u})  
         .then(value => {
             this.obrigatorias_cursando=value;
         });
@@ -57,11 +58,11 @@ components: {
         //.then(value => {
         //    this.eletivos=value;
         //});
-        this.$axios.$post("/rpc/creditos_eletivos_cursados",{"ano": '2017-01-01', "id": this.$store.state.u_id})  
+        this.$axios.$post("/rpc/creditos_eletivos_cursados",{"id": u})  
         .then(value => {
             this.eletivas_cursadas=value;
         });
-        this.$axios.$post("/rpc/creditos_eletivos_cursando",{"ano": '2017-01-01', "id": 24})  
+        this.$axios.$post("/rpc/creditos_eletivos_cursando",{"id": u})  
         .then(value => {
             this.eletivas_cursando=value;
         });
@@ -69,11 +70,11 @@ components: {
         //.then(value => {
         //    this.livres=value;
         //});
-        this.$axios.$post("/rpc/creditos_livres_cursados",{"ano": '2017-01-01', "id": this.$store.state.u_id})  
+        this.$axios.$post("/rpc/creditos_livres_cursados",{"id": u})  
         .then(value => {
             this.livres_cursadas=value;
         });
-        this.$axios.$post("/rpc/creditos_livres_cursando",{"ano": '2017-01-01', "id": this.$store.state.u_id})  
+        this.$axios.$post("/rpc/creditos_livres_cursando",{"id": u})  
         .then(value => {
             this.livres_cursando=value;
         });
