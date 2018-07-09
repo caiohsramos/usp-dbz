@@ -26,9 +26,15 @@ export default {
     },
     methods:{
         increment(){
+            let n = this.$store.state.n_semestre;
+            if(this.counter == null && this.st==""){this.st = "plano"}
             if(this.enabled){
-                this.counter =(this.counter+1)  % 8;
-                this.$store.commit("addDisc", { id: this.id , prop: this.counter});
+                this.counter =(this.counter+1)  % n;
+                if(this.counter == 0){
+                    this.counter= null;
+                    this.st="";
+                }
+                this.$store.commit("addDisc", { id: this.id , prop: (this.counter +0) });
             this.result =this.$store.getters.disc_semestre(this.id);
             }
         }
@@ -36,9 +42,13 @@ export default {
     created(){
         let u = this.$store.state.u_id;
         let ano = this.$store.state.ingresso;
-        if(this.plan!=null){
+        if(this.plan!=null && this.plan != 0){
             this.counter = (this.plan-ano)*2;
+            if(this.counter > this.$store.state.n_semestre){
+                this.$store.commit("setSem",{n: this.counter});
+            };
             this.$store.commit("addDisc",{id: this.id, prop:this.counter});
+            this.st="plano";
         }
         this.$axios.$post("rpc/is_cursada",{"id_disc": this.id, "id_pess": u})
             .then(value=> {
@@ -70,8 +80,10 @@ export default {
   background-color: $primary-color;
 }
 #cursando{
-
   background-color: orange;
+}
+#plano{
+    background-color:#80BF5F;
 }
 .course_status {
     display: flex;

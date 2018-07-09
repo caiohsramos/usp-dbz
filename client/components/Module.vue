@@ -32,7 +32,6 @@ export default {
                 this.$axios.$post('/rpc/list_obrigatorias_log',{"id": u})   
                     .then(value => {
                 this.disciplinas=value;
-                this.$store.commit("setTemp",{value: this.disciplinas})
                 })
             }
             else{

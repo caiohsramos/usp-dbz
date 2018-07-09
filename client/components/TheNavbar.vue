@@ -4,13 +4,44 @@
         <h1>DBZ</h1>
       </div>
       <div class="nav-list">
-        <div> lista dos semestres com links</div>
+            <ul v-for="i in (n + 1)" :key="i">
+            <li v-if="i==1">Geral</li>
+            <li v-if="i>1 && i< n+1">{{i-1}}</li>
+            <li v-if="i==n+1"> <div @click="add()">Adicionar</div></li> 
+        </ul>
       </div>
       <div class="line"></div>
   </nav>
 </template>
-
+<script>
+export default{
+    data(){
+        return{
+            n: this.$store.state.n_semestre,
+        }
+    },
+    created(){
+        this.$store.commit("setSem",{n:9 })
+    },
+    methods:{
+        add(){
+            let j = this.$store.state.n_semestre +1;
+            this.$store.commit("setSem",{n: j});
+            this.n = j;
+            //this.$forceUpdate();
+        }
+    }
+}
+</script>
 <style>
+ul{
+    list-style-type: none;
+    display: inline;
+    float:left;
+}
+.list{
+    display: inline;
+}
 .navbar {
   /* Grid to position the cell itself */
   grid-area: navbar;
@@ -42,7 +73,7 @@ display: flex;
     flex-basis: 100px;
     justify-self: start;
     align-self: center;
-
+    vertical-align:middle;
     box-sizing: border-box;
     width: fill; 
     color: #1E64CD;

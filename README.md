@@ -9,7 +9,7 @@
 * na pasta server/scripts, existem um novos scripts SQL: additional-data, que povoa o banco de dados com disciplinas, e suas inserções e grade\_optativa e grade\_obrigatoria. O banco foi povoado com disciplinas cursadas e em curso para o usuario renatocf@ime.usp.br (senha: 12345).
 
 * Os CRUDS para disciplinas estão na URL: /disciplinas
-
+* Para cada aluno só há um unico plano, pois não era possível gerar mais de um plano no estado que o banco de dados esta implmentado.
 
 This repository is a monorepo and requires [docker][1] and
 [docker-compose][2] to run the services.

@@ -16,7 +16,7 @@ CREATE OR REPLACE FUNCTION list_obrigatorias_log(id bigint) RETURNS TABLE (id_di
         alunos
     WHERE
         dis.id_disciplina = grade.id_disciplina AND
-        grade.ano_grade_obrigatoria = alunos.turma_ingresso AND
+        EXTRACT (year FROM grade.ano_grade_obrigatoria) = EXTRACT (year FROM alunos.turma_ingresso) AND
         alunos.id_pessoa = id)
 SELECT DISTINCT ON (temp.id_disciplina) temp.id_disciplina,temp.codigo_disciplina, temp.creditos_aula, temp.nome, plan.ano_semestre FROM
 temp LEFT JOIN alunos_planejam_disciplinas AS plan ON temp.id_disciplina = plan.id_disciplina
@@ -44,7 +44,7 @@ WITH temp (id_disciplina,codigo_disciplina, creditos_aula, nome) AS (
     WHERE
         opt.id_modulo = id AND
         dis.id_disciplina = opt.id_disciplina AND
-        opt.ano_grade_optativa = alunos.turma_ingresso AND
+        EXTRACT (year FROM opt.ano_grade_optativa) = EXTRACT (year FROM alunos.turma_ingresso) AND
         alunos.id_pessoa = u)
 SELECT DISTINCT ON (temp.id_disciplina) temp.*, plan.ano_semestre FROM
 temp LEFT JOIN alunos_planejam_disciplinas AS plan ON temp.id_disciplina = plan.id_disciplina

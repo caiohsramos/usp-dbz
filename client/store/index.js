@@ -14,7 +14,7 @@ export default () => {
       token: '',
       ingresso: 0,
       u_id: null,
-      temp: null,
+      n_semestre: 8,
       disc_state: {}, 
     },
 
@@ -45,8 +45,8 @@ export default () => {
       setDisc_state(state, {value}){
           state.disc_state = value;
       },
-      setTemp(state, {value}){
-          state.temp = value;
+      setSem(state, {n}){
+          state.n_semestre = n;
       },
       setIngresso(state, { ano }){
           state.ingresso = ano;

@@ -25,6 +25,7 @@ export default {
            this.$store.commit("setEmail", { email: ""});
            this.$store.commit("setIngresso", { ano: ""});
             this.$store.commit("setDisc_state", { value: {} });
+            this.$store.commit("setSem", { n: 9 });
 	       this.$router.go({path: "/"})
         },
         async save(){

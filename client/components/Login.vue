@@ -20,7 +20,6 @@ export default {
       ano: ''
     }
   },
-
   methods: {
     async login() {
       // TODO: Implement login logic here
